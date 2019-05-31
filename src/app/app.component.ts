@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,4 @@ import { Component, TemplateRef } from '@angular/core';
 })
 export class AppComponent {
   title = 'First App';
-  opened = false;
-  sidebarPosition = 'left';
-
-  constructor() {} 
-
-  toggleSideBar() {
-    this.opened = !this.opened;
-  }
 }
