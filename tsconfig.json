@@ -19,12 +19,6 @@
       "dom"
     ],
     "paths": {
-      "tvmaze": [
-        "dist/tvmaze"
-      ],
-      "tvmaze/*": [
-        "dist/tvmaze/*"
-      ],
       "mlkms-common-ui": [
         "dist/mlkms-common-ui"
       ],

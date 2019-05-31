@@ -1,24 +1,91 @@
-# MlkmsCommonUi
+# mlkms-common-ui
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+An Angular module for common ui.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project mlkms-common-ui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mlkms-common-ui`.
-> Note: Don't forget to add `--project mlkms-common-ui` or else it will be added to the default project in your `angular.json` file. 
+```shell
+npm install --save mlkms-common-ui
+```
 
-## Build
+## Usage
 
-Run `ng build mlkms-common-ui` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add `MlkmsCommonUiModule` to your app module:
 
-## Publishing
+```typescript
+import { MlkmsCommonUiModule } from 'mlkms-common-ui';
 
-After building your library with `ng build mlkms-common-ui`, go to the dist folder `cd dist/mlkms-common-ui` and run `npm publish`.
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, MlkmsCommonUiModule],
+  bootstrap: [AppComponent],
+})
+class AppModule {}
+```
 
-## Running unit tests
+## Options
 
-Run `ng test mlkms-common-ui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### `<mlkms-header>`
 
-## Further help
+#### Inputs
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+| Property name | Type | Default | Description |
+| ------------- | ---- | ------- | ----------- |
+| toggleBtnPosition | string | `left` | Indicate where the toogle button to trigger sidebar meny should be placed. Available values are `left`, `right`. |
+| toggleButtonTemplate | TemplateRef | | Custom UI for toggle button. |
+| logoTemplate | TemplateRef | | Custom UI for logo. |
+| headerMenuTemplate | TemplateRef | | Custom UI for header menu. |
+| userProfileTemplate | TemplateRef | | Custom UI for user profile. |
+
+In your app component, simply use add a `<mlkms-header>` element and add more templates if you want.
+
+```typescript
+@Component({
+  selector: 'app',
+  template: `
+    <mlkms-header
+      [toggleBtnPosition]="'left'"
+      [toggleButtonTemplate]="customToggleSidebar"
+      [userProfileTemplate]="isLoggedIn ? userProfileTemplate : loginButton"
+    >
+    </mlkms-header>
+
+    <ng-template #customToggleSidebar>
+      <div class="hambuger-logo-wrapper" (click)="onHambugerButtonClick()">
+        <img
+          src="assets/img/hambuger.png"
+          alt="Sidebar menu toggler"
+          class="hambuger-logo"
+          width="64"
+          height="64">
+      </div>
+    </ng-template>
+  `
+})
+class AppComponent {}
+```
+
+### `<mlkms-footer>`
+
+#### Inputs
+
+| Property name | Type | Default | Description |
+| ------------- | ---- | ------- | ----------- |
+| fixed | boolean | `false` | To fix footer to the bottom of browser. |
+
+### `<mlkms-sidebar-menu>`
+
+#### Inputs
+
+| Property name | Type | Default | Description |
+| ------------- | ---- | ------- | ----------- |
+| opened | boolean | `false` | To show or hide sidebar menu. |
+| position | string | `left` | To display and hide sidebar menu on the left or on the right of the screen. Available values are `left`, `right`. |
+
+### `<mlkms-login>`
+
+#### Outputs
+
+| Property name | Type | Default | Description |
+| ------------- | ---- | ------- | ----------- |
+| loginHandler | Function | | To pass user info to external components when user logged in successfully. |

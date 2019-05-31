@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'mlkms-header',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() toggleBtnPosition: string = 'left';
+  @Input() toggleButtonTemplate: TemplateRef<any>;
+  @Input() logoTemplate: TemplateRef<any>;
+  @Input() headerMenuTemplate: TemplateRef<any>;
+  @Input() userProfileTemplate: TemplateRef<any>;
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
 }

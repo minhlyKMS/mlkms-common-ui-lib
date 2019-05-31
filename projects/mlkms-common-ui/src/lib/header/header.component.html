@@ -1,3 +1,40 @@
 <header class="header">
-  <ng-content></ng-content>
+  <div class="header-content">
+    <div class="header-content--left">
+      <ng-container *ngIf="toggleBtnPosition === 'left'">
+        <ng-container *ngTemplateOutlet="toggleButtonTemplate"></ng-container>
+      </ng-container>
+      <ng-container *ngTemplateOutlet="logoTemplate ? logoTemplate : defaultLogoTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="headerMenuTemplate ? headerMenuTemplate : defaultHeaderMenuTemplate"></ng-container>
+    </div>
+    <div class="header-content--right">
+      <ng-container *ngTemplateOutlet="userProfileTemplate"></ng-container>
+      <ng-container *ngIf="toggleBtnPosition === 'right'">
+        <ng-container *ngTemplateOutlet="toggleButtonTemplate"></ng-container>
+      </ng-container>
+    </div>
+  </div>
 </header>
+
+<ng-template #defaultLogoTemplate>
+  <div class="header-logo-container">
+    <a href="https://www.kms-technology.com/">
+      <img
+        src="https://www.kms-technology.com/wp-content/uploads/2018/10/logo.png"
+        alt="KMS Technology"
+        class="logo"
+      >
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #defaultHeaderMenuTemplate>
+  <div class="header-menu-container">
+    <ul>
+      <li>Menu 1</li>
+      <li>Menu 2</li>
+      <li>Menu 3</li>
+      <li>Menu 4</li>
+    </ul>
+  </div>
+</ng-template>
